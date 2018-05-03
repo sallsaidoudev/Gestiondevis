@@ -18,5 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/utilisateurs','Utilisateurs@index');
-Route::post('/enregistrer','Utilisateurs@enregistrer');
+Route::get('/clients','ClientsController@index');
+Route::get('/edit','ClientsController@edit');
+Route::get('/client/create','ClientsController@create');
+Route::post('/enregistrer','ClientsController@enregistrer');

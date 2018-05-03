@@ -9,40 +9,48 @@
                     <h5 class="card-title">Gestion utilisateur</h5>
                     <hr>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <form method="post" action="/enregistrer">
-                        @csrf
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="inputEmail4">Raison social</label>
-                                <input type="text" name="raison_social" class="form-control" id="inputEmail4" placeholder="raison_social">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="inputPassword4">Adresse</label>
-                                <input type="text" name="adresse" class="form-control" id="inputPassword4" placeholder="adresse">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="inputEmail4">Code postal</label>
-                                <input type="text" name="code_postal" class="form-control" id="inputEmail4" placeholder="code postal">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="inputPassword4">Ville</label>
-                                <input type="text" name="ville" class="form-control" id="inputPassword4" placeholder="ville">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="inputEmail4">Region</label>
-                                <input type="text" name="region" class="form-control" id="inputEmail4" placeholder="region">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="inputPassword4">Telephone</label>
-                                <input type="text" name="tel" class="form-control" id="inputPassword4" placeholder="tel">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="inputPassword4">Email</label>
-                                <input type="email" name="email" class="form-control" id="inputPassword4" placeholder="Email">
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Enregistrer</button>
-                    </form>
+                    @if (\Session::has('success'))
+                        <div class="alert alert-success">
+                            <p>{{ \Session::get('success') }}</p>
+                        </div><br />
+                    @endif
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Raison social</th>
+                            <th>Adresse</th>
+                            <th>Code postal</th>
+                            <th>Ville</th>
+                            <th>Tel</th>
+                            <th>Region</th>
+                            <th>Email</th>
+                            <th colspan="2">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($clients as $client)
+                            <tr>
+                                <td>{{$client['id']}}</td>
+                                <td>{{$client['raison_social']}}</td>
+                                <td>{{$client['adresse']}}</td>
+                                <td>{{$client['code_postal']}}</td>
+                                <td>{{$client['ville']}}</td>
+                                <td>{{$client['tel']}}</td>
+                                <td>{{$client['region']}}</td>
+                                <td>{{$client['email']}}</td>
+                                <td><a href="#" class="btn btn-warning">Edit</a></td>
+                                <td>
+                                    <form action="#" method="post">
+                                        @csrf
+                                        <input name="_method" type="hidden" value="DELETE">
+                                        <button class="btn btn-danger" type="submit">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
 
                 </div>
             </div>

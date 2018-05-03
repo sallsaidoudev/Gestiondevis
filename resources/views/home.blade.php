@@ -6,10 +6,10 @@
         <div class="col-sm-4">
             <div class="card text-white bg-danger mb-3">
                 <div class="card-body">
-                    <h5 class="card-title">Gestion utilisateur</h5>
+                    <h5 class="card-title">Gestion client</h5>
                     <hr>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="/utilisateurs" class="btn btn-outline-warning">Gerer</a>
+                    <a href="/clients" class="btn btn-outline-warning">Gerer</a>
                 </div>
             </div>
         </div>

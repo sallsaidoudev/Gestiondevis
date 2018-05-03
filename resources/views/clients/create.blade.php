@@ -8,8 +8,16 @@
                 <div class="card-body">
                     <h5 class="card-title">Gestion utilisateur</h5>
                     <hr>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <form method="post" action="/enregistrer">
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    <form method="post" action="{{url('enregistrer')}}">
                         @csrf
                         <div class="form-row">
                             <div class="form-group col-md-6">
